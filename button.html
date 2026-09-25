@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    body {
+        background: whitesmoke;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 150vh;t 
+    }
+
+    .btn {
+        padding: 15px 40px;
+        color: black;
+        background: transparent;
+        border: 2px solid red;
+        border-radius: 8px;
+        cursor: pointer;
+        box-shadow: 0 0 10px white;
+        transition: 0.3s;
+    }
+
+    .btn:hover {
+        color: black;
+        background: blueviolet;
+        box-shadow: 0 0 30px black;
+    }
+</style>
+</head>
+
+<body>
+
+    <div id="page1">
+        <button class="btn" onclick="showPage2()">GET START</button>
+    </div>
+
+    <div id="page2" style="display:none;">
+        <h1>Welcome to our page</h1>
+        <button class="btn" onclick="showPage1()">BACK</button>
+    </div>
+
+<script>
+    function showPage2() {
+        document.getElementById("page1").style.display = "none";
+        document.getElementById("page2").style.display = "block";
+    }
+
+    function showPage1() {
+        document.getElementById("page2").style.display = "none";
+        document.getElementById("page1").style.display = "block";
+    }
+</script>
+
+</body>
+</html>

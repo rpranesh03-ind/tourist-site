@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>TravelEase - Tourist Booking</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0;font-family:Arial}
+body{background:#f4f7fb;color:#222}
+nav{background:#0077b6;color:white;padding:18px 7%;display:flex;
+justify-content:space-between;align-items:center}
+nav h1{font-size:25px}
+nav ul{display:flex;gap:20px;list-style:none}
+nav a{color:white;text-decoration:none;font-weight:bold}
+.hero{height:430px;background:linear-gradient(#03476faa,#03476faa),
+url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e")
+center/cover;display:flex;align-items:center;justify-content:center;
+text-align:center;color:white}
+.hero h2{font-size:48px;margin-bottom:15px}
+.hero p{font-size:19px;margin-bottom:25px}
+.btn{background:#ffb703;color:#111;border:0;padding:12px 22px;
+border-radius:6px;font-weight:bold;cursor:pointer}
+.btn:hover{background:#fb8500;color:white}
+section{padding:55px 7%}
+.title{text-align:center;margin-bottom:30px}
+.title h2{color:#0077b6;font-size:30px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:25px}
+.card{background:white;border-radius:10px;overflow:hidden;
+box-shadow:0 4px 15px #0002}
+.card img{width:100%;height:170px;object-fit:cover}
+.card div{padding:18px}
+.card h3{color:#0077b6;margin-bottom:8px}
+.card p{margin-bottom:10px}
+.price{color:#fb8500;font-weight:bold;margin-bottom:12px}
+.box{max-width:850px;margin:auto;background:white;padding:30px;
+border-radius:10px;box-shadow:0 4px 15px #0002}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.group{margin-bottom:18px}
+label{display:block;font-weight:bold;margin-bottom:6px}
+input,select{width:100%;padding:11px;border:1px solid #ccc;
+border-radius:5px;font-size:15px}
+.summary{background:#e8f7ff;padding:18px;border-radius:7px;margin:15px 0}
+.summary h3{color:#0077b6;margin-bottom:10px}
+.total{font-size:26px;font-weight:bold;color:#fb8500;margin-top:8px}
+#confirmation{display:none;max-width:700px;margin:auto}
+.ticket{border:2px dashed #0077b6;padding:25px;background:white;
+border-radius:10px}
+.ticket p{margin:9px 0}
+.id{background:#0077b6;color:white;padding:12px;text-align:center;
+border-radius:5px;margin-bottom:18px;font-size:19px}
+footer{background:#023047;color:white;text-align:center;padding:25px}
+@media(max-width:650px){
+nav{flex-direction:column;gap:12px}.hero h2{font-size:35px}
+.row{grid-template-columns:1fr}.box{padding:20px}
+}
+@media print{
+nav,.hero,#destinations,#booking,footer,#confirmation h2,
+#confirmation .btn{display:none!important}
+#confirmation{display:block}
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+<h1>🌍 TravelEase</h1>
+<ul>
+<li><a href="#home">Home</a></li>
+<li><a href="#destinations">Destinations</a></li>
+<li><a href="#booking">Book</a></li>
+</ul>
+</nav>
+
+<section class="hero" id="home">
+<div>
+<h2>Explore the World 🌎</h2>
+<p>Discover amazing places and book your tourist tickets easily.</p>
+<a href="#booking" class="btn">Book Your Ticket</a>
+</div>
+</section>
+
+<section id="destinations">
+<div class="title">
+<h2>Popular Destinations</h2>
+<p>Choose your favorite destination</p>
+</div>
+
+<div class="cards">
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e">
+<div>
+<h3>Paradise Beach</h3>
+<p>Enjoy beautiful beaches and relaxing views.</p>
+<p class="price">Adult: ₹500</p>
+<button class="btn" onclick="choose('Paradise Beach')">Book Now</button>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1519681393784-d120267933ba">
+<div>
+<h3>Mountain Valley</h3>
+<p>Experience breathtaking mountains and nature.</p>
+<p class="price">Adult: ₹700</p>
+<button class="btn" onclick="choose('Mountain Valley')">Book Now</button>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e">
+<div>
+<h3>Crystal Lake</h3>
+<p>Visit a peaceful lake with beautiful scenery.</p>
+<p class="price">Adult: ₹600</p>
+<button class="btn" onclick="choose('Crystal Lake')">Book Now</button>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1500534623283-312aade485b7">
+<div>
+<h3>Nature Park</h3>
+<p>Explore forests, wildlife and natural beauty.</p>
+<p class="price">Adult: ₹400</p>
+<button class="btn" onclick="choose('Nature Park')">Book Now</button>
+</div>
+</div>
+
+</div>
+</section>
+
+<section id="booking">
+<div class="title">
+<h2>🎫 Book Your Ticket</h2>
+<p>Enter your tourist details</p>
+</div>
+
+<div class="box">
+<form id="form">
+
+<div class="row">
+<div class="group">
+<label>Full Name</label>
+<input id="name" type="text" placeholder="Enter name" required>
+</div>
+<div class="group">
+<label>Email</label>
+<input id="email" type="email" placeholder="Enter email" required>
+</div>
+</div>
+
+<div class="row">
+<div class="group">
+<label>Phone</label>
+<input id="phone" type="tel" placeholder="Enter phone" required>
+</div>
+<div class="group">
+<label>Destination</label>
+<select id="destination" required>
+<option value="">Select Destination</option>
+<option>Paradise Beach</option>
+<option>Mountain Valley</option>
+<option>Crystal Lake</option>
+<option>Nature Park</option>
+</select>
+</div>
+</div>
+
+<div class="row">
+<div class="group">
+<label>Visit Date</label>
+<input id="date" type="date" required>
+</div>
+<div class="group">
+<label>Visit Time</label>
+<select id="time" required>
+<option value="">Select Time</option>
+<option>09:00 AM</option>
+<option>10:00 AM</option>
+<option>11:00 AM</option>
+<option>12:00 PM</option>
+<option>02:00 PM</option>
+<option>03:00 PM</option>
+<option>04:00 PM</option>
+<option>05:00 PM</option>
+</select>
+</div>
+</div>
+
+<div class="row">
+<div class="group">
+<label>Adult Tickets</label>
+<input id="adults" type="number" min="1" value="1" required>
+</div>
+<div class="group">
+<label>Child Tickets</label>
+<input id="children" type="number" min="0" value="0">
+</div>
+</div>
+
+<div class="summary">
+<h3>Booking Summary</h3>
+<p>Adults: <span id="as">1</span></p>
+<p>Children: <span id="cs">0</span></p>
+<p>Adult Amount: ₹<span id="ap">0</span></p>
+<p>Child Amount: ₹<span id="cp">0</span></p>
+<hr>
+<p>Total Amount:</p>
+<div class="total">₹<span id="total">0</span></div>
+</div>
+
+<button class="btn" style="width:100%" type="submit">
+🎟️ Confirm Booking
+</button>
+
+</form>
+</div>
+</section>
+
+<section id="confirmation">
+<h2 style="color:#2a9d8f;margin-bottom:20px">✅ Booking Confirmed!</h2>
+
+<div class="ticket">
+<div class="id">Booking ID: <span id="bid"></span></div>
+
+<p><b>Name:</b> <span id="cn"></span></p>
+<p><b>Email:</b> <span id="ce"></span></p>
+<p><b>Phone:</b> <span id="cpn"></span></p>
+<p><b>Destination:</b> <span id="cd"></span></p>
+<p><b>Date:</b> <span id="cdate"></span></p>
+<p><b>Time:</b> <span id="ct"></span></p>
+<p><b>Adults:</b> <span id="ca"></span></p>
+<p><b>Children:</b> <span id="cc"></span></p>
+<p><b>Total:</b> ₹<span id="ctotal"></span></p>
+
+<br>
+<button class="btn" onclick="window.print()">🖨️ Print Ticket</button>
+</div>
+</section>
+
+<footer>
+<h3>🌍 TravelEase</h3>
+<p>Simple Tourist Ticket Booking System</p>
+<p>© 2026 TravelEase</p>
+</footer>
+
+<script>
+
+const prices={
+"Paradise Beach":500,
+"Mountain Valley":700,
+"Crystal Lake":600,
+"Nature Park":400
+};
+
+const destination=document.getElementById("destination");
+const adults=document.getElementById("adults");
+const children=document.getElementById("children");
+const total=document.getElementById("total");
+
+function calculate(){
+
+let place=destination.value;
+let a=+adults.value||0;
+let c=+children.value||0;
+let price=prices[place]||0;
+
+let adultTotal=a*price;
+let childTotal=c*price*.5;
+let amount=adultTotal+childTotal;
+
+document.getElementById("as").textContent=a;
+document.getElementById("cs").textContent=c;
+document.getElementById("ap").textContent=adultTotal;
+document.getElementById("cp").textContent=childTotal;
+total.textContent=amount;
+}
+
+destination.onchange=calculate;
+adults.oninput=calculate;
+children.oninput=calculate;
+
+function choose(place){
+destination.value=place;
+calculate();
+document.getElementById("booking")
+.scrollIntoView({behavior:"smooth"});
+}
+
+date.min=new Date().toISOString().split("T")[0];
+
+document.getElementById("form").onsubmit=function(e){
+
+e.preventDefault();
+
+let id="TRV-"+Math.floor(100000+Math.random()*900000);
+let booking={
+id:id,
+name:name.value,
+email:email.value,
+phone:phone.value,
+destination:destination.value,
+date:date.value,
+time:time.value,
+adults:+adults.value,
+children:+children.value,
+total:+total.textContent
+};
+
+document.getElementById("bid").textContent=id;
+document.getElementById("cn").textContent=booking.name;
+document.getElementById("ce").textContent=booking.email;
+document.getElementById("cpn").textContent=booking.phone;
+document.getElementById("cd").textContent=booking.destination;
+document.getElementById("cdate").textContent=booking.date;
+document.getElementById("ct").textContent=booking.time;
+document.getElementById("ca").textContent=booking.adults;
+document.getElementById("cc").textContent=booking.children;
+document.getElementById("ctotal").textContent=booking.total;
+
+let bookings=JSON.parse(localStorage.getItem("bookings")||"[]");
+bookings.push(booking);
+localStorage.setItem("bookings",JSON.stringify(bookings));
+
+document.getElementById("confirmation").style.display="block";
+document.getElementById("confirmation")
+.scrollIntoView({behavior:"smooth"});
+
+this.reset();
+adults.value=1;
+children.value=0;
+calculate();
+};
+
+calculate();
+
+</script>
+
+</body>
+</html>
